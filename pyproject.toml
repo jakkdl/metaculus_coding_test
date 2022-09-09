@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "metaculus_probability_distribution"
+version = "0.1"
+description = "Metaculus coding challenge: Implementing a probability distribution (drawing) web app"
+authors = ["John Litborn <author@email.com>"]
+readme = "README.md"
+packages = [
+    {include = "metaculus_probability_distribution"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.1"
+
+[tool.poetry.dev-dependencies]
+# bug in poetry? Extras doesn't work
+django-stubs = {git = "https://github.com/typeddjango/django-stubs.git"} #extras = ["compatible-mypy"]}
+django-stubs-ext = {git = "https://github.com/typeddjango/django-stubs.git",subdirectory="django_stubs_ext"}
+tox = "^3.26"
+mypy = "^0.971"
+pre-commit = "^2.20.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.django-stubs]
+django_settings_module = "metaculus_probability_distribution.settings"
