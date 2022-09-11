@@ -1,0 +1,11 @@
+<a href="add_question">Add Question</a>
+<p>List of questions, click to view and add new prediction</p>
+{% if questions %}
+    <ul>
+    {% for question in questions %}
+        <li><a href="{% url 'detail' question.id %}">{{ question.question_title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions are available.</p>
+{% endif %}

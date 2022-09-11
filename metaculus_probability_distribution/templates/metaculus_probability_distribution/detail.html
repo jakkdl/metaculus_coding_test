@@ -1,0 +1,20 @@
+<a href="{% url 'index' %}">index</a>
+<h1>{{question.question_title}}</h1>
+<p>{{question.question_description}}</p>
+<p>Start date: {{question.start_date}}</p>
+<p>End date: {{question.end_date}}</p>
+<p>Publish date: {{question.pub_date}}</p>
+
+<a href="{% url 'predict' question.id %}">Add prediction</a><br />
+<a href="{% url 'close_question_form' question.id %}">Close question</a>
+
+{% if predictions %}
+<h2>List of predictions made</h2>
+<ul>
+{% for prediction in predictions %}
+<li><a href="{% url 'prediction_detail' prediction.id %}">{{prediction}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<h2>No predictions made</h2>
+{% endif %}

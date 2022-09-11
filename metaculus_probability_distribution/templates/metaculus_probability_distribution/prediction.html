@@ -1,0 +1,9 @@
+<a href="{% url 'index' %}">index</a>
+<a href="{% url 'detail' prediction.question.id %}">question overview</a>
+<h1>{{prediction.question}}</h1>
+<p>Prediction made at {{prediction}}</p>
+<ul>
+{% for prediction_point in prediction_points %}
+<li>{{prediction_point}}</li>
+{% endfor %}
+</ul>

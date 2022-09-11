@@ -1,0 +1,20 @@
+<a href="/">index</a>
+<h1>Add Question</h1>
+{% if errors %}
+    <ul>
+    {% for error in errors %}
+        <li><strong>{{error}}</strong></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+<form action="{% url 'add_question_action' %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <legend><h1>{{ question.question_text }}</h1></legend>
+    Title: <input type="text" name="title"/> <br />
+    description: <input type="text" name="description" /> <br />
+    start date: <input type="date" name="start_date"/> <br />
+    end date: <input type="date" name="end_date" />
+</fieldset>
+<input type="submit" value="Add question">
+</form>

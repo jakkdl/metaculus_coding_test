@@ -16,7 +16,27 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", views.IndexView.as_view(), name="index"),
+    path("add_question/", views.add_question, name="add_question"),
+    path("add_question_action/", views.add_question_action, name="add_question_action"),
+    path("<int:pk>/", views.DetailView.as_view(), name="detail"),
+    path("<int:pk>/predict", views.PredictView.as_view(), name="predict"),
+    path(
+        "<int:pk>/close", views.CloseQuestionView.as_view(), name="close_question_form"
+    ),
+    path(
+        "<int:question_id>/add_prediction", views.add_prediction, name="add_prediction"
+    ),
+    path(
+        "<int:question_id>/close_question", views.close_question, name="close_question"
+    ),
+    path(
+        "prediction/<int:pk>/",
+        views.PredictionDetailView.as_view(),
+        name="prediction_detail",
+    ),
 ]

@@ -1,0 +1,21 @@
+<a href="{% url 'index' %}">index</a>
+<a href="{% url 'detail' question.id %}">question overview</a>
+{% if error_msg %}<p><strong>{{error_msg}}</strong></p>{% endif %}
+<h1>{{question.question_title}}</h1>
+<p>{{question.question_description}}</p>
+<h3>Enter point predictions in %, missing values will be inferred from neighbouring values if you enter at least two values</h3>
+<form action="{% url 'add_prediction' question.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+<ul>
+{% for day in question.remaining_days %}
+{% if day in error_keys %}
+<strong>invalid probability</strong>
+{% endif %}
+<!--TODO: the value thing doesn't work, django template stuff is weird -->
+<li>{{day}}: <input type=text name={{day}} value="{{prev_value.day}}" ></li>
+{% endfor %}
+</ul>
+</fieldset>
+<input type="submit" value="Add prediction">
+</form>

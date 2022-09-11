@@ -3,4 +3,3 @@ __pycache__
 .virtualenv
 .tox
 .coverage
-db.sqlite3

@@ -1,0 +1,13 @@
+<a href="{% url 'index' %}">index</a>
+<a href="{% url 'detail' question.id %}">back to question overview</a>
+<h1>Closing "{{question}}"</h1>
+<p>{{question.description}}</p>
+<p>Did the question resolve true? Check the box for yes, leave it unchecked for no</p>
+
+<form action="{% url 'close_question' question.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+<input type=checkbox name=resolve_true />
+</fieldset>
+<input type="submit" value="Close question">
+</form>
